@@ -973,6 +973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017397215848975036}
   - component: {fileID: 7017397215848975037}
+  - component: {fileID: -6955949305938458771}
   m_Layer: 0
   m_Name: egyptian_B
   m_TagString: Untagged
@@ -987,7 +988,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7649677577292746758}
-  m_LocalRotation: {x: 0, y: 0.9842176, z: 0, w: 0.17696305}
+  m_LocalRotation: {x: 0, y: 0.9999994, z: 0, w: -0.0011036098}
   m_LocalPosition: {x: 0.2, y: -0.31, z: -0.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1017,6 +1018,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!143 &-6955949305938458771
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649677577292746758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7725004816028703971
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,16 @@ public class DataLib
     public static List<HeroModel> DataHero()
     {
         List<HeroModel> heroModels = new List<HeroModel>();
-
+        PlayerPrefs.SetFloat("Hp1", 80);
+        PlayerPrefs.SetFloat("Hp2", 70);
+        PlayerPrefs.SetFloat("Hp3", 200);
+        PlayerPrefs.SetFloat("Hp5", 120);  
         /* Hero 1 */
         HeroModel h1 = new HeroModel()
         {
             Kode = "001",
             Nama = "Dom",
-            Hp = 80,
+            Hp = PlayerPrefs.GetFloat("Hp1"),
             Mana = 400,
             Agility = 90,
             Armor = 40,
@@ -29,7 +32,7 @@ public class DataLib
         {
             Kode = "002",
             Nama = "Tej",
-            Hp = 90,
+            Hp = PlayerPrefs.GetFloat("Hp2"),
             Mana = 300,
             Agility = 83,
             Armor = 61,
@@ -45,7 +48,7 @@ public class DataLib
         {
             Kode = "003",
             Nama = "Roman",
-            Hp = 86,
+            Hp = PlayerPrefs.GetFloat("Hp3"),
             Mana = 500,
             Agility = 70,
             Armor = 30,
@@ -61,7 +64,7 @@ public class DataLib
         {
             Kode = "004",
             Nama = "Erica",
-            Hp = 88,
+            Hp = PlayerPrefs.GetFloat("Hp4"),
             Mana = 350,
             Agility = 78,
             Armor = 66,
@@ -77,7 +80,7 @@ public class DataLib
         {
             Kode = "005",
             Nama = "Carlina",
-            Hp = 80,
+            Hp = PlayerPrefs.GetFloat("Hp5"),
             Mana = 320,
             Agility = 80,
             Armor = 70,

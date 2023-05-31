@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 597354776684751876}
   - component: {fileID: 597354776684751877}
+  - component: {fileID: -4134903081225743342}
   m_Layer: 0
   m_Name: roman_D
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216713388567115454}
-  m_LocalRotation: {x: 0, y: 0.11986325, z: 0, w: 0.99279046}
+  m_LocalRotation: {x: 0, y: 0.24382307, z: 0, w: 0.9698198}
   m_LocalPosition: {x: 0.27, y: -0.32, z: -1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -86,6 +87,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!143 &-4134903081225743342
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216713388567115454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &553973164826589384
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 557014759671098353}
   - component: {fileID: 557014759671098352}
   - component: {fileID: 557014759671098355}
+  - component: {fileID: 4148504845777479859}
   m_Layer: 0
   m_Name: char5
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557014759671098354}
-  m_LocalRotation: {x: 0, y: 0.05598538, z: 0, w: 0.9984317}
+  m_LocalRotation: {x: 0, y: 0.08133164, z: 0, w: 0.9966872}
   m_LocalPosition: {x: 0.14, y: -0.11, z: -1.27}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
@@ -98,3 +99,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!143 &4148504845777479859
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557014759671098354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5000002
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
