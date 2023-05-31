@@ -6,7 +6,7 @@ public class CharacterSelectionScript : MonoBehaviour
 {
     [SerializeField] List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] int counter = 0;
-    [SerializeField] int indexCurr;
+    public int indexCurr = 0;
 
     private int countChar;
     // Start is called before the first frame update
@@ -18,7 +18,10 @@ public class CharacterSelectionScript : MonoBehaviour
             item.SetActive(false);
         } 
 
+        //,menampilkan karakter pertama
         allCharacters[0].SetActive(true);
+
+        FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
 
     }
 
@@ -33,6 +36,8 @@ public class CharacterSelectionScript : MonoBehaviour
         {
             PrevChar();
         }
+        allCharacters[indexCurr].transform.Rotate(Vector3.up * Time.deltaTime * 5);
+
     }
 
     public void NextChar()
@@ -41,6 +46,9 @@ public class CharacterSelectionScript : MonoBehaviour
         indexCurr = HasilBagi(counter, countChar);
         ClearCharacter();
         allCharacters[indexCurr].SetActive(true);
+
+        //isikan nilai ke UI
+        FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
     }
 
     public void PrevChar()
@@ -49,6 +57,7 @@ public class CharacterSelectionScript : MonoBehaviour
         indexCurr = HasilBagi(counter, countChar);
         ClearCharacter();
         allCharacters[indexCurr].SetActive(true);
+        FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
     }
 
     private int HasilBagi(int _counter, int _kapasitas)
