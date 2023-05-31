@@ -17,7 +17,7 @@ public class TriggerHP : MonoBehaviour
     }
     void Start()
     {
-        hero = Instantiate(CharacterSelectionScript.Instance.pilihChar, new Vector3(100, 10, 500), Quaternion.identity);;
+        hero = Instantiate(CharacterSelectionScript.Instance.ChooseChar, new Vector3(100, 10, 500), Quaternion.identity);
         indek = GameObject.Find("Selection Character Manager").GetComponent<CharacterSelectionScript>().indexCurr;
     }
 

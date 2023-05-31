@@ -13,12 +13,12 @@ public class CharacterSelectionScript : MonoBehaviour
         private set { instance = value; }
     }
     [SerializeField] List<GameObject> allChar = new List<GameObject>();
-    [SerializeField] List<GameObject> CharDiSin = new List<GameObject>();
+    [SerializeField] List<GameObject> CharScene = new List<GameObject>();
     [SerializeField] int counter = 0;
     public int indexCurr = 0;
 
     private int countChar;
-    public GameObject pilihChar;
+    public GameObject ChooseChar;
     [SerializeField] GameObject charParent;
     
     private void Awake() {
@@ -47,7 +47,7 @@ public class CharacterSelectionScript : MonoBehaviour
 
         ClearChar();
         
-        CharDiSin[0].SetActive(true);
+        CharScene[0].SetActive(true);
         FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
     }
 
@@ -62,7 +62,7 @@ public class CharacterSelectionScript : MonoBehaviour
         // {
         //     PrevChar();
         // }
-        foreach (GameObject item in CharDiSin)
+        foreach (GameObject item in CharScene)
         {
             if (item == null) return;
         }
@@ -73,7 +73,7 @@ public class CharacterSelectionScript : MonoBehaviour
     {
         foreach (Transform item in _parent.transform)
         {
-            CharDiSin.Add(item.gameObject);
+            CharScene.Add(item.gameObject);
         }
     }
 
@@ -83,7 +83,7 @@ public class CharacterSelectionScript : MonoBehaviour
         indexCurr = HasilBagi(counter, countChar);
 
         ClearChar();
-        CharDiSin[indexCurr].SetActive(true);
+        CharScene[indexCurr].SetActive(true);
         FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
     }
 
@@ -93,7 +93,7 @@ public class CharacterSelectionScript : MonoBehaviour
         indexCurr = HasilBagi(counter, countChar);
 
         ClearChar();
-        CharDiSin[indexCurr].SetActive(true);
+        CharScene[indexCurr].SetActive(true);
         FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
     }
 
@@ -104,7 +104,7 @@ public class CharacterSelectionScript : MonoBehaviour
 
     private void ClearChar()
     {
-        foreach (GameObject item in CharDiSin)
+        foreach (GameObject item in CharScene)
         {
             item.SetActive(false);
         }
@@ -112,8 +112,8 @@ public class CharacterSelectionScript : MonoBehaviour
 
     public void PilihKarakter()
     {
-        pilihChar = allChar[indexCurr];
-        CharDiSin[indexCurr].GetComponent<Animator>().SetTrigger("attack");
+        ChooseChar = allChar[indexCurr];
+        CharScene[indexCurr].GetComponent<Animator>().SetTrigger("attack");
         StartCoroutine(HoldForNextScene(2));
     }
 

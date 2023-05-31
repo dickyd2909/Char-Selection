@@ -15,7 +15,7 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         menCam = Camera.main.gameObject;
-        player =  Instantiate(CharacterSelectionScript.Instance.pilihChar, new Vector3(5, 0.5f, 5), Quaternion.identity);
+        player =  Instantiate(CharacterSelectionScript.Instance.ChooseChar, new Vector3(5, 0.5f, 5), Quaternion.identity);
         menCam.transform.parent = player.transform;
         menCam.transform.localPosition = new Vector3(0.27f, 2.11f, -2.9f);
         menCam.transform.localEulerAngles = new Vector3(11, 0, 0);
