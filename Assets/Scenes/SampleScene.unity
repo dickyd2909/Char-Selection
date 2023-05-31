@@ -1567,7 +1567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allCharacters: []
+  characterInScene: []
   counter: 0
+  charParent: {fileID: 1522914137}
   indexCurr: 0
   characterChoosen: {fileID: 0}
 --- !u!4 &706617515

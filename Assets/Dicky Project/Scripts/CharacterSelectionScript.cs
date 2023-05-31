@@ -6,63 +6,74 @@ using System.Linq;
 
 public class CharacterSelectionScript : MonoBehaviour
 {
-    [SerializeField] List<GameObject> allCharacters = new List<GameObject>();
-    [SerializeField] List<GameObject> characterInScene = new List<GameObject>();
+    private static CharacterSelectionScript instance;
+    public static CharacterSelectionScript Instance
+    {
+        get { return instance; }
+        private set { instance = value; }
+    }
+    [SerializeField] List<GameObject> allChar = new List<GameObject>();
+    [SerializeField] List<GameObject> CharDiSin = new List<GameObject>();
     [SerializeField] int counter = 0;
-    [SerializeField] GameObject charParent;
     public int indexCurr = 0;
 
     private int countChar;
+    public GameObject pilihChar;
+    [SerializeField] GameObject charParent;
+    
+    private void Awake() {
+        if (instance != null && instance == this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
 
-    [SerializeField] GameObject characterChoosen;
     // Start is called before the first frame update
     void Start()
     {
-        allCharacters = Resources.LoadAll<GameObject>("Characters").ToList();
-        //set counter character
-
-        foreach(GameObject item in allCharacters)
+        allChar = Resources.LoadAll<GameObject>("Characters").ToList();
+        foreach (GameObject item in allChar)
         {
-            characterInScene.Add(item);
             Instantiate(item, charParent.transform);
         }
-        countChar = allCharacters.Count;
-        foreach(GameObject item in allCharacters){
-            item.SetActive(false);
-        }
+        GetAllChar(charParent);
+
+        countChar = allChar.Count;
+
+        ClearChar();
         
-         
-
-        //,menampilkan karakter pertama
-        allCharacters[0].SetActive(true);
-
+        CharDiSin[0].SetActive(true);
         FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
-
     }
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     NextChar();
+        // }
+        // else if(Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     PrevChar();
+        // }
+        foreach (GameObject item in CharDiSin)
         {
-            NextChar();
+            if (item == null) return;
         }
-        else if(Input.GetKeyDown(KeyCode.Q))
-        {
-            PrevChar();
-        }
-        allCharacters[indexCurr].transform.Rotate(Vector3.up * Time.deltaTime * 5);
-
+        allChar[indexCurr].transform.Rotate(Vector3.up * Time.deltaTime);
     }
 
-    void GetAllChildInScene(GameObject _parent){
-        foreach(Transform item in _parent.transform)
+    void GetAllChar(GameObject _parent)
+    {
+        foreach (Transform item in _parent.transform)
         {
-            characterInScene.Add(item.gameObject);
+            CharDiSin.Add(item.gameObject);
         }
     }
 
@@ -70,10 +81,9 @@ public class CharacterSelectionScript : MonoBehaviour
     {
         counter++;
         indexCurr = HasilBagi(counter, countChar);
-        ClearCharacter();
-        allCharacters[indexCurr].SetActive(true);
 
-        //isikan nilai ke UI
+        ClearChar();
+        CharDiSin[indexCurr].SetActive(true);
         FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
     }
 
@@ -81,27 +91,10 @@ public class CharacterSelectionScript : MonoBehaviour
     {
         counter--;
         indexCurr = HasilBagi(counter, countChar);
-        ClearCharacter();
-        allCharacters[indexCurr].SetActive(true);
+
+        ClearChar();
+        CharDiSin[indexCurr].SetActive(true);
         FindObjectOfType<HeroDataManager>().UpdateAttributeHero(indexCurr);
-    }
-
-    public void PilihKarakter()
-    {
-        characterChoosen = allCharacters[indexCurr];
-        
-        //set annimasi
-        characterChoosen.GetComponent<Animator>().SetTrigger("attack");
-
-        HoldForNextScene(2);
-
-        StartCoroutine(HoldForNextScene(2.5f));
-    }
-
-    IEnumerator HoldForNextScene(float _timer)
-    {
-        yield return new WaitForSeconds(_timer);
-        SceneManager.LoadScene("ingame"); 
     }
 
     private int HasilBagi(int _counter, int _kapasitas)
@@ -109,10 +102,24 @@ public class CharacterSelectionScript : MonoBehaviour
         return _counter % _kapasitas;
     }
 
-    private void ClearCharacter(){
-        foreach(GameObject item in allCharacters)
+    private void ClearChar()
+    {
+        foreach (GameObject item in CharDiSin)
         {
             item.SetActive(false);
         }
+    }
+
+    public void PilihKarakter()
+    {
+        pilihChar = allChar[indexCurr];
+        CharDiSin[indexCurr].GetComponent<Animator>().SetTrigger("attack");
+        StartCoroutine(HoldForNextScene(2));
+    }
+
+    IEnumerator HoldForNextScene(float _timer)
+    {
+        yield return new WaitForSeconds(_timer);
+        SceneManager.LoadScene("ingame");
     }
 }
